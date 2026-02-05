@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? (backup)</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 24px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.35);
+    }
+    h1 {
+      color: #d62839;
+      margin-top: 0;
+      font-size: 32px;
+    }
+    p {
+      color: #555;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .question {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff4d6d;
+      margin: 24px 0;
+    }
+    .hearts {
+      font-size: 30px;
+      margin: 20px 0;
+    }
+    .yes-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 20px 40px;
+      background: linear-gradient(135deg, #ff4d6d, #d62839);
+      color: #fff;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 50px;
+      box-shadow: 0 8px 20px rgba(214, 40, 57, 0.5);
+    }
+    .yes-btn:active {
+      transform: scale(0.97);
+    }
+    .no-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 26px;
+      background: #ffe3ea;
+      color: #d62839;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>❤️ Hey my love ❤️</h1>
+
+    <p>
+      Every moment with you makes my world brighter.
+      There’s one question I’ve been saving just for you.
+    </p>
+
+    <div class="question">Will you be my Valentine? 💖</div>
+
+    <div class="hearts">💗 💓 💕 💞 💖 💘 💝</div>
+
+    <a
+      class="yes-btn"
+      href="mailto:?subject=My%20Answer%20❤️&body=YES!!!%20I%20would%20love%20to%20be%20your%20Valentine%20💖"
+    >
+      YES, obviously 💘
+    </a>
+
+    <br />
+
+    <a class="no-btn" href="#" onclick="playfulNo(event)">No 🙃</a>
+
+    <footer>
+      Made with love ❤️<br />
+      — your fiancé 💍
+    </footer>
+  </div>
+
+  <script>
+    function playfulNo(e) {
+      e.preventDefault();
+      const messages = [
+        'Nice try 😌',
+        'Wrong button 💕',
+        'That one is broken 😅',
+        'You know the answer is YES 💖',
+        'Still not convincing 😉'
+      ];
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      alert(msg);
+    }
+  </script>
+</body>
+</html>
