@@ -1,126 +1,337 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hey Love, Will You Be My Valentine???</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A sweet valentine page — Will you be my Valentine?" />
+  <meta name="theme-color" content="#ff6a7a" />
+  <title>Will You Be My Valentine?</title>
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
-      font-family: 'Segoe UI', Arial, sans-serif;
+    :root{
+      --bg-1: #ff9aa2;
+      --bg-2: #ff6a88;
+      --card-bg: #fff;
+      --accent: #d62839;
+      --muted: #6b6b6b;
+      --shadow: 0 16px 40px rgba(214,40,57,0.14);
+      --radius: 22px;
+      --max-width: 480px;
     }
-    .card {
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 24px;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.35);
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg,var(--bg-1),var(--bg-2));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:2rem;
+      color: #28121a;
     }
-    h1 {
-      color: #d62839;
-      margin-top: 0;
-      font-size: 32px;
+
+    .card{
+      width:100%;
+      max-width:var(--max-width);
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:2.25rem;
+      text-align:center;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform: translateY(8px);
+      opacity: 0;
+      animation: appear .6s ease forwards;
     }
-    p {
-      color: #555;
-      font-size: 18px;
-      line-height: 1.6;
+
+    @keyframes appear{
+      to{ transform: none; opacity: 1 }
     }
-    .question {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ff4d6d;
-      margin: 24px 0;
+
+    header {
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+      justify-content:center;
+      margin-bottom:0.75rem;
     }
-    .hearts {
-      font-size: 30px;
-      margin: 20px 0;
+
+    .logo {
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      display:inline-grid;
+      place-items:center;
+      background: radial-gradient(circle at 30% 20%, #fff7f8, #ffdfe5);
+      font-size:28px;
+      color:var(--accent);
+      box-shadow: 0 8px 20px rgba(214,40,57,0.08);
     }
-    .yes-btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 20px 40px;
-      background: linear-gradient(135deg, #ff4d6d, #d62839);
-      color: #fff;
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: bold;
-      border-radius: 50px;
-      box-shadow: 0 8px 20px rgba(214, 40, 57, 0.5);
+
+    h1{
+      margin:0;
+      font-size:1.5rem;
+      color:var(--accent);
+      line-height:1.05;
     }
-    .yes-btn:active {
-      transform: scale(0.97);
+
+    p.lead{
+      margin:0.9rem 0 1.25rem;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.5;
     }
-    .no-btn {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 26px;
-      background: #ffe3ea;
-      color: #d62839;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 30px;
-      cursor: pointer;
+
+    .question{
+      font-size:1.125rem;
+      font-weight:700;
+      color:var(--bg-2);
+      margin:1rem 0;
     }
-    footer {
-      margin-top: 25px;
-      font-size: 14px;
-      color: #999;
+
+    .hearts{
+      font-size:1.6rem;
+      letter-spacing:0.2rem;
+      margin:0.65rem 0 1.35rem;
+      opacity:0.95;
+    }
+
+    .controls{
+      display:flex;
+      gap:0.75rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.5rem;
+      padding:0.95rem 1.4rem;
+      border-radius:999px;
+      font-weight:700;
+      text-decoration:none;
+      transition:transform .12s ease, box-shadow .12s ease;
+      user-select:none;
+    }
+
+    .btn:active{transform:scale(.98)}
+    .btn:focus{outline:3px solid rgba(214,40,57,.12); outline-offset:3px}
+
+    .yes{
+      background: linear-gradient(135deg,#ff6a88,#d62839);
+      color:#fff;
+      box-shadow: 0 10px 30px rgba(214,40,57,0.18);
+      font-size:1.05rem;
+    }
+
+    .no{
+      background:#fff3f5;
+      color:var(--accent);
+      border:1px solid rgba(214,40,57,0.06);
+      font-size:0.95rem;
+      padding:0.6rem 1rem;
+    }
+
+    footer{
+      margin-top:1.25rem;
+      font-size:0.95rem;
+      color:#9a7a82;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.5rem;
+    }
+
+    /* ring image size */
+    .ring {
+      width:20px;
+      height:20px;
+      display:inline-block;
+      vertical-align:middle;
+    }
+
+    /* floating hearts decoration */
+    .float {
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
+    .heart{
+      position:absolute;
+      font-size:18px;
+      will-change: transform, opacity;
+      animation: floatUp 6s linear infinite;
+      opacity:.95;
+    }
+    .heart:nth-child(1){left:8%; bottom:10%; animation-duration:5.5s; transform:translateY(0) scale(1.05)}
+    .heart:nth-child(2){left:26%; bottom:6%; animation-duration:6.2s; animation-delay:1.2s}
+    .heart:nth-child(3){left:72%; bottom:12%; animation-duration:5.8s; animation-delay:.6s}
+    .heart:nth-child(4){left:54%; bottom:8%; animation-duration:6.6s; animation-delay:1.6s}
+    .heart:nth-child(5){left:86%; bottom:4%; animation-duration:7.0s; animation-delay:0.2s}
+
+    @keyframes floatUp{
+      0%{transform:translateY(0) rotate(0deg); opacity:1}
+      50%{opacity:.9}
+      100%{transform:translateY(-140px) rotate(12deg); opacity:0}
+    }
+
+    /* subtle pulse for the yes button */
+    .yes.pulse{
+      animation: pulse 2.6s infinite
+    }
+    @keyframes pulse{
+      0%{box-shadow: 0 10px 30px rgba(214,40,57,0.18)}
+      50%{box-shadow: 0 18px 38px rgba(214,40,57,0.22); transform: translateY(-2px)}
+      100%{box-shadow: 0 10px 30px rgba(214,40,57,0.18); transform:none}
+    }
+
+    /* toast */
+    .toast{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%) translateY(18px);
+      bottom:20px;
+      background:#fff;
+      border-radius:12px;
+      padding:0.9rem 1.1rem;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease;
+      z-index:60;
+    }
+    .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto}
+
+    /* respects user preference */
+    @media (prefers-reduced-motion: reduce){
+      .heart, .btn, .card{animation:none; transition:none}
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      .card{padding:1.6rem}
+      .logo{width:48px;height:48px}
+      .hearts{font-size:1.2rem}
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>❤️ Hey my love ❤️</h1>
+  <main class="card" role="main" aria-labelledby="page-title">
+    <div class="float" aria-hidden="true">
+      <span class="heart">💗</span>
+      <span class="heart">💕</span>
+      <span class="heart">💝</span>
+      <span class="heart">💘</span>
+      <span class="heart">💞</span>
+    </div>
 
-    <p>
-      Every moment with you makes my world brighter.
-      There’s one question I’ve been saving just for you.
+    <header>
+      <div class="logo" aria-hidden="true">♥</div>
+      <h1 id="page-title">Will you be my Valentine?</h1>
+    </header>
+
+    <p class="lead">
+      Every moment with you makes my world brighter. I wrote this little page just for you.
     </p>
 
-    <div class="question">Will you be my Valentine? 💖</div>
+    <div class="question" aria-live="polite">Will you be my Valentine? 💖</div>
 
-    <div class="hearts">💗 💓 💕 💞 💖 💘 💝</div>
+    <div class="hearts" aria-hidden="true">💗 · 💓 · 💕 · 💞 · 💖</div>
 
-    <a
-      class="yes-btn"
-      href="mailto:?subject=My%20Answer%20❤️&body=YES!!!%20I%20would%20love%20to%20be%20your%20Valentine%20💖"
-    >
-      YES, obviously 💘
-    </a>
+    <div class="controls" role="group" aria-label="Answer choices">
+      <!-- mailto now points directly to the requested email -->
+      <a class="btn yes pulse" id="yesBtn" href="mailto:sainikhil031@gmail.com?subject=My%20Answer%20%E2%9D%A4%EF%B8%8F&body=YES!!!%20I%20would%20love%20to%20be%20your%20Valentine%20%F0%9F%92%96" aria-label="Send a yes by email to Nikhil">YES, obviously 💘</a>
 
-    <br />
-
-    <a class="no-btn" href="#" onclick="playfulNo(event)">No 🙃</a>
+      <button class="btn no" id="noBtn" aria-haspopup="dialog" aria-controls="noToast">No 🙃</button>
+    </div>
 
     <footer>
-      Made with love ❤️<br />
-      — your fiancé 💍
+      <!-- inline ring SVG -->
+      <svg class="ring" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path fill="#d62839" d="M12 2c1.35 0 2.66.3 3.84.84L22 2l-1.1 6.6C21.2 10.3 21 11.15 21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3c0-.33 0-.66.02-.99C12.01 2.01 12 2 12 2z" opacity=".12"/>
+        <path fill="#ffd700" d="M12 4c-4.97 0-9 4.03-9 9 0 1.6.39 3.11 1.08 4.44L12 22l3.82-4.56C17.61 16.11 18 14.6 18 13c0-4.97-4.03-9-9-9z" opacity=".95"/>
+        <circle cx="16.5" cy="7.5" r="1.2" fill="#fff5c4"/>
+      </svg>
+
+      <span>Made with love, your fiancé Nikhil</span>
     </footer>
+  </main>
+
+  <div id="noToast" class="toast" role="status" aria-live="polite">
+    <span style="font-size:20px">💖</span>
+    <div>
+      <strong>Nice try!</strong>
+      <div style="font-size:0.92rem;color:#6f5a5f">You know the answer is YES 😊</div>
+    </div>
   </div>
 
   <script>
-    function playfulNo(e) {
-      e.preventDefault();
-      const messages = [
-        'Nice try 😌',
-        'Wrong button 💕',
-        'That one is broken 😅',
-        'You know the answer is YES 💖',
-        'Still not convincing 😉'
-        'I know you are trying find "YES", so YES it is 😉'
-      ];
-      const msg = messages[Math.floor(Math.random() * messages.length)];
-      alert(msg);
-    }
+    (function(){
+      const noBtn = document.getElementById('noBtn');
+      const toast = document.getElementById('noToast');
+      const yesBtn = document.getElementById('yesBtn');
+
+      function showToast(){
+        toast.classList.add('show');
+        clearTimeout(toast._hideTimeout);
+        toast._hideTimeout = setTimeout(()=> {
+          toast.classList.remove('show');
+        }, 2200);
+      }
+
+      noBtn.addEventListener('click', e => {
+        // playful animation on the button
+        noBtn.animate(
+          [{ transform: 'translateY(0)' }, { transform: 'translateY(-6px)' }, { transform: 'translateY(0)' }],
+          { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' }
+        );
+        showToast();
+      });
+
+      // tiny confetti effect using hearts
+      function burstHearts(x, y){
+        for(let i=0;i<8;i++){ 
+          const el = document.createElement('div');
+          el.textContent = ['💗','💘','💝','💕'][Math.floor(Math.random()*4)];
+          el.style.position = 'fixed';
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          el.style.fontSize = (10+Math.random()*18)+'px';
+          el.style.pointerEvents = 'none';
+          el.style.zIndex = 9999;
+          document.body.appendChild(el);
+          const dx = (Math.random()-0.5)*200;
+          const dy = - (100 + Math.random()*200);
+          el.animate([
+            { transform: 'translate(0,0) scale(1)', opacity:1 },
+            { transform: `translate(${dx}px, ${dy}px) scale(.8)`, opacity:0 }
+          ], { duration: 900 + Math.random()*400, easing: 'cubic-bezier(.2,.8,.2,1)' }).onfinish = () => el.remove();
+        }
+      }
+
+      yesBtn.addEventListener('click', e => {
+        // compute center of button
+        const r = yesBtn.getBoundingClientRect();
+        const x = r.left + r.width/2;
+        const y = r.top + r.height/2;
+        burstHearts(x,y);
+        // note: mailto will open the user's email client and send to the address in href
+      });
+
+    })();
   </script>
 </body>
 </html>
